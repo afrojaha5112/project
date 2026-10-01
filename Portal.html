@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Department Laboratory Showcase</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #f5f7ff, #eef7ff);
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc, #00c6ff);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        header h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 20px;
+        }
+
+        .header-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 28px;
+            background: white;
+            color: #2575fc;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .header-button:hover {
+            background: #ffd166;
+            color: #333;
+        }
+
+        nav {
+            background: #141e30;
+            padding: 18px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd166;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1250px;
+            margin: 50px auto;
+        }
+
+        section {
+            margin-bottom: 70px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: 34px;
+            color: #402080;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        .line {
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            margin: 12px auto;
+            border-radius: 10px;
+        }
+
+        /* Statistics */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .stat {
+            background: white;
+            text-align: center;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .stat h2 {
+            color: #6a11cb;
+            font-size: 32px;
+        }
+
+        .stat p {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* LABS */
+
+        .lab-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .lab-card {
+            background: white;
+            padding: 20px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(70,70,150,0.12);
+            border-top: 5px solid #6a11cb;
+            transition: 0.4s;
+        }
+
+        .lab-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .lab-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
+
+        .lab-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .lab-card h3 {
+            color: #4b2391;
+            margin-bottom: 12px;
+        }
+
+        .lab-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* EQUIPMENT */
+
+        .equipment-section {
+            background: linear-gradient(135deg, #fff0f6, #eef3ff);
+            padding: 50px 30px;
+            border-radius: 25px;
+        }
+
+        .equipment-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .equipment {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .equipment:hover {
+            transform: scale(1.05);
+        }
+
+        .equipment img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .equipment-icon {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        .equipment h3 {
+            color: #2575fc;
+            margin-bottom: 8px;
+        }
+
+        .equipment p {
+            color: #666;
+        }
+
+        /* FACILITIES */
+
+        .facilities-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 45px;
+            border-radius: 25px;
+            color: white;
+        }
+
+        .facilities-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .facility {
+            background: rgba(255,255,255,0.15);
+            padding: 18px 20px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .facility:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateX(7px);
+        }
+
+        .facility span {
+            font-size: 22px;
+            margin-right: 10px;
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: 0.4s;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-top {
+            padding: 28px;
+            color: white;
+            background: linear-gradient(135deg, #ff6a88, #ff99ac);
+        }
+
+        .project:nth-child(2) .project-top {
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
+        }
+
+        .project:nth-child(3) .project-top {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+        }
+
+        .project:nth-child(4) .project-top {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+        }
+
+        .project:nth-child(5) .project-top {
+            background: linear-gradient(135deg, #4776e6, #8e54e9);
+        }
+
+        .project:nth-child(6) .project-top {
+            background: linear-gradient(135deg, #ee0979, #ff6a00);
+        }
+
+        .project-top h3 {
+            font-size: 21px;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .project-button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 10px 20px;
+            background: #2575fc;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .project-button:hover {
+            background: #6a11cb;
+            transform: scale(1.05);
+        }
+
+        .project-details {
+            margin-top: 20px;
+            background: #f4f7ff;
+            padding: 20px;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .project-details:target {
+            display: block;
+        }
+
+        .project-details h4 {
+            color: #4b2391;
+            margin-bottom: 10px;
+        }
+
+        .project-details p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .project-details strong {
+            color: #2575fc;
+        }
+
+        .close-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 7px 15px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 13px;
+        }
+
+        /* RESOURCES */
+
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .resource {
+            padding: 30px;
+            border-radius: 18px;
+            color: white;
+            min-height: 180px;
+            transition: 0.4s;
+        }
+
+        .resource:hover {
+            transform: translateY(-8px);
+        }
+
+        .resource:nth-child(1) {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .resource:nth-child(2) {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+        }
+
+        .resource:nth-child(3) {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+        }
+
+        .resource:nth-child(4) {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+        }
+
+        .resource:nth-child(5) {
+            background: linear-gradient(135deg, #ee0979, #ff6a00);
+        }
+
+        .resource:nth-child(6) {
+            background: linear-gradient(135deg, #4568dc, #b06ab3);
+        }
+
+        .resource-icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .resource h3 {
+            margin-bottom: 10px;
+        }
+
+        .resource p {
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        footer h2 {
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #ddd;
+            margin: 6px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1000px) {
+
+            .lab-container,
+            .projects {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .equipment-list,
+            .resources,
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            header h1 {
+                font-size: 30px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+
+            .lab-container,
+            .projects,
+            .equipment-list,
+            .resources,
+            .stats,
+            .facilities-list {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                width: 92%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>🔬 Department Laboratory Showcase</h1>
+
+    <p>
+        Explore Innovation, Technology, Research & Practical Learning
+    </p>
+
+    <a href="#labs" class="header-button">
+        Explore Our Labs
+    </a>
+
+</header>
+
+
+<nav>
+
+    <a href="#labs">🏫 Labs</a>
+    <a href="#equipment">💻 Equipment</a>
+    <a href="#facilities">🏢 Facilities</a>
+    <a href="#projects">🚀 Projects</a>
+    <a href="#resources">📚 Resources</a>
+
+</nav>
+
+
+<div class="container">
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+        <div class="stat">
+            <h2>06+</h2>
+            <p>Modern Labs</p>
+        </div>
+
+        <div class="stat">
+            <h2>100+</h2>
+            <p>Computer Systems</p>
+        </div>
+
+        <div class="stat">
+            <h2>50+</h2>
+            <p>Student Projects</p>
+        </div>
+
+        <div class="stat">
+            <h2>24/7</h2>
+            <p>Digital Resources</p>
+        </div>
+
+    </div>
+
+
+    <!-- LABORATORIES -->
+
+    <section id="labs">
+
+        <div class="section-title">
+
+            <h2>Our Laboratories</h2>
+
+            <div class="line"></div>
+
+            <p>
+                Modern laboratories designed for practical learning and innovation
+            </p>
+
+        </div>
+
+
+        <div class="lab-container">
+
+            <!-- Programming Lab -->
+
+            <div class="lab-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80"
+                    alt="Computer Programming Lab">
+
+                <div class="lab-icon">💻</div>
+
+                <h3>Computer Programming Lab</h3>
+
+                <p>
+                    A dedicated environment for learning C, C++, Java,
+                    Python and modern programming technologies.
+                </p>
+
+            </div>
+
+
+            <!-- AI Lab -->
+
+            <div class="lab-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=900&q=80"
+                    alt="AI and Data Science Lab">
+
+                <div class="lab-icon">🤖</div>
+
+                <h3>AI & Data Science Lab</h3>
+
+                <p>
+                    Supports Artificial Intelligence, Machine Learning,
+                    Data Analytics and visualization projects.
+                </p>
+
+            </div>
+
+
+            <!-- Networking Lab -->
+
+            <div class="lab-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80"
+                    alt="Networking Lab">
+
+                <div class="lab-icon">🌐</div>
+
+                <h3>Networking Lab</h3>
+
+                <p>
+                    Provides practical experience in networking,
+                    routing, switching and communication technologies.
+                </p>
+
+            </div>
+
+
+            <!-- Web Development Lab -->
+
+            <div class="lab-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=900&q=80"
+                    alt="Web Development Lab">
+
+                <div class="lab-icon">🌐</div>
+
+                <h3>Web Development Lab</h3>
+
+                <p>
+                    Students develop interactive websites and web
+                    applications using modern web technologies.
+                </p>
+
+            </div>
+
+
+            <!-- Cyber Security Lab -->
+
+            <div class="lab-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=80"
+                    alt="Cyber Security Lab">
+
+                <div class="lab-icon">🔐</div>
+
+                <h3>Cyber Security Lab</h3>
+
+                <p>
+                    Provides a practical environment for cybersecurity,
+                    network security and ethical hacking learning.
+                </p>
+
+            </div>
+
+
+            <!-- Cloud Lab -->
+
+            <div class="lab-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80"
+                    alt="Cloud Computing Lab">
+
+                <div class="lab-icon">☁️</div>
+
+                <h3>Cloud Computing Lab</h3>
+
+                <p>
+                    Supports cloud computing, virtualization,
+                    containerization and DevOps technologies.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EQUIPMENT -->
+
+    <section id="equipment" class="equipment-section">
+
+        <div class="section-title">
+
+            <h2>Laboratory Equipment</h2>
+
+            <div class="line"></div>
+
+            <p>
+                Advanced equipment supporting practical experimentation
+            </p>
+
+        </div>
+
+
+        <div class="equipment-list">
+
+            <div class="equipment">
+
+                <img
+                    src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80"
+                    alt="Desktop Computers">
+
+                <div class="equipment-icon">💻</div>
+
+                <h3>Desktop Computers</h3>
+
+                <p>
+                    High-performance computers for programming and development.
+                </p>
+
+            </div>
+
+
+            <div class="equipment">
+
+                <img
+                    src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80"
+                    alt="Servers">
+
+                <div class="equipment-icon">🖥️</div>
+
+                <h3>Servers</h3>
+
+                <p>
+                    Servers for database, networking and cloud experiments.
+                </p>
+
+            </div>
+
+
+            <div class="equipment">
+
+                <img
+                    src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=900&q=80"
+                    alt="Network Devices">
+
+                <div class="equipment-icon">📡</div>
+
+                <h3>Network Devices</h3>
+
+                <p>
+                    Routers, switches and networking components.
+                </p>
+
+            </div>
+
+
+            <div class="equipment">
+
+                <img
+                    src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=80"
+                    alt="Security Tools">
+
+                <div class="equipment-icon">🔒</div>
+
+                <h3>Security Tools</h3>
+
+                <p>
+                    Tools for cybersecurity and network security experiments.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FACILITIES -->
+
+    <section id="facilities">
+
+        <div class="section-title">
+
+            <h2>Our Facilities</h2>
+
+            <div class="line"></div>
+
+            <p>
+                Student-friendly facilities for learning and research
+            </p>
+
+        </div>
+
+
+        <div class="facilities-box">
+
+            <div class="facilities-list">
+
+                <div class="facility">
+                    <span>⚡</span>
+                    High-Speed Internet Connectivity
+                </div>
+
+                <div class="facility">
+                    <span>💻</span>
+                    Modern Computer Systems
+                </div>
+
+                <div class="facility">
+                    <span>❄️</span>
+                    Air-Conditioned Laboratories
+                </div>
+
+                <div class="facility">
+                    <span>🚀</span>
+                    Project Development Environment
+                </div>
+
+                <div class="facility">
+                    <span>🖥️</span>
+                    Licensed Software Tools
+                </div>
+
+                <div class="facility">
+                    <span>📶</span>
+                    Wi-Fi Connectivity
+                </div>
+
+                <div class="facility">
+                    <span>📚</span>
+                    Digital Learning Resources
+                </div>
+
+                <div class="facility">
+                    <span>🛠️</span>
+                    Technical Support
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <div class="section-title">
+
+            <h2>🚀 Student Projects</h2>
+
+            <div class="line"></div>
+
+            <p>
+                Explore innovative projects developed by our students
+            </p>
+
+        </div>
+
+
+        <div class="projects">
+
+
+            <!-- Project 1 -->
+
+            <div class="project">
+
+                <img
+                    class="project-image"
+                    src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=80"
+                    alt="Heart Disease Prediction">
+
+                <div class="project-top">
+
+                    <h3>❤️ Heart Disease Prediction</h3>
+
+                </div>
+
+                <div class="project-content">
+
+                    <p>
+                        Machine learning system for predicting heart
+                        disease using patient health information.
+                    </p>
+
+                    <a href="#project1" class="project-button">
+                        View Project
+                    </a>
+
+                    <div id="project1" class="project-details">
+
+                        <h4>Heart Disease Prediction</h4>
+
+                        <p>
+                            <strong>Domain:</strong> Machine Learning
+                        </p>
+
+                        <p>
+                            <strong>Technologies:</strong>
+                            Python, Pandas, NumPy, Scikit-learn
+                        </p>
+
+                        <p>
+                            <strong>Description:</strong>
+                            The system analyzes patient medical attributes
+                            and predicts whether a person may have heart
+                            disease.
+                        </p>
+
+                        <p>
+                            <strong>Objective:</strong>
+                            To develop a machine learning model that can
+                            assist in early prediction of heart disease.
+                        </p>
+
+                        <a href="#projects" class="close-button">
+                            Close
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Project 2 -->
+
+            <div class="project">
+
+                <img
+                    class="project-image"
+                    src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1000&q=80"
+                    alt="Smart Attendance System">
+
+                <div class="project-top">
+
+                    <h3>📊 Smart Attendance System</h3>
+
+                </div>
+
+                <div class="project-content">
+
+                    <p>
+                        Digital system for recording and managing student
+                        attendance efficiently.
+                    </p>
+
+                    <a href="#project2" class="project-button">
+                        View Project
+                    </a>
+
+                    <div id="project2" class="project-details">
+
+                        <h4>Smart Attendance System</h4>
+
+                        <p>
+                            <strong>Domain:</strong> Web Development
+                        </p>
+
+                        <p>
+                            <strong>Technologies:</strong>
+                            HTML, CSS, JavaScript, Python, MySQL
+                        </p>
+
+                        <p>
+                            <strong>Description:</strong>
+                            The application allows faculty to record
+                            attendance and students to view their
+                            attendance information.
+                        </p>
+
+                        <p>
+                            <strong>Objective:</strong>
+                            To reduce manual attendance work and maintain
+                            digital attendance records.
+                        </p>
+
+                        <a href="#projects" class="close-button">
+                            Close
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Project 3 -->
+
+            <div class="project">
+
+                <img
+                    class="project-image"
+                    src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1000&q=80"
+                    alt="Cyber Security Monitor">
+
+                <div class="project-top">
+
+                    <h3>🔐 Cyber Security Monitor</h3>
+
+                </div>
+
+                <div class="project-content">
+
+                    <p>
+                        A monitoring system designed to analyze network
+                        activity and identify security events.
+                    </p>
+
+                    <a href="#project3" class="project-button">
+                        View Project
+                    </a>
+
+                    <div id="project3" class="project-details">
+
+                        <h4>Cyber Security Monitor</h4>
+
+                        <p>
+                            <strong>Domain:</strong> Cybersecurity
+                        </p>
+
+                        <p>
+                            <strong>Technologies:</strong>
+                            Python, Networking, Wireshark
+                        </p>
+
+                        <p>
+                            <strong>Description:</strong>
+                            The project demonstrates basic network
+                            monitoring and security event analysis.
+                        </p>
+
+                        <p>
+                            <strong>Objective:</strong>
+                            To understand network traffic and identify
+                            unusual network activities.
+                        </p>
+
+                        <a href="#projects" class="close-button">
+                            Close
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Project 4 -->
+
+            <div class="project">
+
+                <img
+                    class="project-image"
+                    src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80"
+                    alt="Department Information Portal">
+
+                <div class="project-top">
+
+                    <h3>🏫 Department Information Portal</h3>
+
+                </div>
+
+                <div class="project-content">
+
+                    <p>
+                        A centralized web portal containing department
+                        information and academic resources.
+                    </p>
+
+                    <a href="#project4" class="project-button">
+                        View Project
+                    </a>
+
+                    <div id="project4" class="project-details">
+
+                        <h4>Department Information Portal</h4>
+
+                        <p>
+                            <strong>Domain:</strong> Web Development
+                        </p>
+
+                        <p>
+                            <strong>Technologies:</strong>
+                            HTML, CSS, JavaScript
+                        </p>
+
+                        <p>
+                            <strong>Features:</strong>
+                            Faculty information, programs, courses,
+                            facilities, announcements and contact details.
+                        </p>
+
+                        <p>
+                            <strong>Objective:</strong>
+                            To provide department information through
+                            a single user-friendly website.
+                        </p>
+
+                        <a href="#projects" class="close-button">
+                            Close
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Project 5 -->
+
+            <div class="project">
+
+                <img
+                    class="project-image"
+                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80"
+                    alt="Cloud Storage System">
+
+                <div class="project-top">
+
+                    <h3>☁️ Cloud Storage System</h3>
+
+                </div>
+
+                <div class="project-content">
+
+                    <p>
+                        A cloud-based application for storing and managing
+                        digital files.
+                    </p>
+
+                    <a href="#project5" class="project-button">
+                        View Project
+                    </a>
+
+                    <div id="project5" class="project-details">
+
+                        <h4>Cloud Storage System</h4>
+
+                        <p>
+                            <strong>Domain:</strong> Cloud Computing
+                        </p>
+
+                        <p>
+                            <strong>Technologies:</strong>
+                            HTML, CSS, Python, Cloud Services
+                        </p>
+
+                        <p>
+                            <strong>Description:</strong>
+                            The system provides a basic platform for
+                            uploading, storing and managing files.
+                        </p>
+
+                        <p>
+                            <strong>Objective:</strong>
+                            To demonstrate basic cloud storage concepts
+                            and digital file management.
+                        </p>
+
+                        <a href="#projects" class="close-button">
+                            Close
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Project 6 -->
+
+            <div class="project">
+
+                <img
+                    class="project-image"
+                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80"
+                    alt="Student Performance Analysis">
+
+                <div class="project-top">
+
+                    <h3>📈 Student Performance Analysis</h3>
+
+                </div>
+
+                <div class="project-content">
+
+                    <p>
+                        Data analysis project that studies student
+                        academic performance.
+                    </p>
+
+                    <a href="#project6" class="project-button">
+                        View Project
+                    </a>
+
+                    <div id="project6" class="project-details">
+
+                        <h4>Student Performance Analysis</h4>
+
+                        <p>
+                            <strong>Domain:</strong> Data Science
+                        </p>
+
+                        <p>
+                            <strong>Technologies:</strong>
+                            Python, Pandas, NumPy, Matplotlib
+                        </p>
+
+                        <p>
+                            <strong>Description:</strong>
+                            Student marks and academic data are analyzed
+                            to identify performance patterns.
+                        </p>
+
+                        <p>
+                            <strong>Objective:</strong>
+                            To understand student performance through
+                            data analysis and visualization.
+                        </p>
+
+                        <a href="#projects" class="close-button">
+                            Close
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESOURCES -->
+
+    <section id="resources">
+
+        <div class="section-title">
+
+            <h2>📚 Technical Resources</h2>
+
+            <div class="line"></div>
+
+            <p>
+                Technologies and tools available for students
+            </p>
+
+        </div>
+
+
+        <div class="resources">
+
+            <div class="resource">
+
+                <div class="resource-icon">👨‍💻</div>
+
+                <h3>Programming Tools</h3>
+
+                <p>
+                    Python, Java, C, C++, Visual Studio Code,
+                    Eclipse and other development tools.
+                </p>
+
+            </div>
+
+
+            <div class="resource">
+
+                <div class="resource-icon">🗄️</div>
+
+                <h3>Database Technologies</h3>
+
+                <p>
+                    MySQL, SQL Server, PostgreSQL and database
+                    management tools.
+                </p>
+
+            </div>
+
+
+            <div class="resource">
+
+                <div class="resource-icon">☁️</div>
+
+                <h3>Cloud & DevOps</h3>
+
+                <p>
+                    Docker, Git, GitHub, cloud platforms and
+                    DevOps development tools.
+                </p>
+
+            </div>
+
+
+            <div class="resource">
+
+                <div class="resource-icon">🤖</div>
+
+                <h3>AI & Machine Learning</h3>
+
+                <p>
+                    Scikit-learn, TensorFlow, NumPy, Pandas and
+                    Jupyter Notebook.
+                </p>
+
+            </div>
+
+
+            <div class="resource">
+
+                <div class="resource-icon">🛡️</div>
+
+                <h3>Cybersecurity Tools</h3>
+
+                <p>
+                    Wireshark, Nmap, Kali Linux and other
+                    security learning tools.
+                </p>
+
+            </div>
+
+
+            <div class="resource">
+
+                <div class="resource-icon">📖</div>
+
+                <h3>Learning Resources</h3>
+
+                <p>
+                    Digital libraries, online courses, documentation
+                    and technical reference materials.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h2>Department of Computer Applications</h2>
+
+    <p>🔬 Department Laboratory Showcase</p>
+
+    <p>Learning • Innovation • Research • Technology</p>
+
+    <p>© 2026 Department of Computer Applications</p>
+
+</footer>
+
+</body>
+</html>
